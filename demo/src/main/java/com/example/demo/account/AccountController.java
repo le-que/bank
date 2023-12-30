@@ -30,10 +30,11 @@ public class AccountController {
         accountService.deleteAccount(accoutId);
     }
 
-
-
-//    @PutMapping(path = "{accountId}")
-//    public void updateBalance
-//        @PathVariable("accountId") String accoutId, @RequestParam(required = True) int balance) {
-//    }
+    @PutMapping(path = "{accountId}")
+    public void updateAccount (
+        @PathVariable("accountId") String accoutId,
+        @RequestParam(required = true) int balance,
+        @RequestParam(required = false) String owner) {
+        accountService.updateAccount(accoutId, balance, owner);
+    }
 }

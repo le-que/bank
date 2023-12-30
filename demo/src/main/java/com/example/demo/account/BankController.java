@@ -15,15 +15,19 @@ public class BankController {
     public BankController(BankService bankService) {
         this.bankService = bankService;
     }
+
     @GetMapping
     public List<Bank> getBanks() {
         return bankService.getBanks();
     }
-    @PostMapping
-    public void newBank(@RequestBody Bank bank) {
-        bankService.addNewBank(bank);
+
+    @PostMapping(path = "{bankId}")
+    public void newBank(@RequestParam(required = true) String corpId,
+                        @PathVariable("bankId") String bankId,
+                        @RequestParam(required = true) String routingNum) {
+        bankService.addNewBank(corpId, bankId, routingNum);
     }
-    
+
     @DeleteMapping(path = "{bankId}")
     public void deleteBank(@PathVariable("bankId") String bankId) {
         bankService.deleteBank(bankId);

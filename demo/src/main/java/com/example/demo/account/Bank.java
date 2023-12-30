@@ -8,30 +8,36 @@ import java.util.List;
 @Entity
 @Table(name = "bank")
 public class Bank {
-    @Column(name = "corp_id", columnDefinition = "VARCHAR(20)", nullable = false)
-    private String corpId;
+    @ManyToOne
+    @JoinColumn(name = "corpId")
+    private Corporation corp;
     @Id
     @Column(name = "bankId", columnDefinition = "VARCHAR(20)", nullable = false)
     private String bankId;
     @Column(name = "routing_num", columnDefinition = "VARCHAR(100)")
     private String routingNum;
-//    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
-//    private List<Account> account = new ArrayList<>();
 
     public Bank() {
     }
-    public Bank(String corpId, String bankId, String routingNum) {
-        this.corpId = corpId;
+
+    public Bank(Corporation corp, String bankId, String routingNum) {
+        this.corp = corp;
         this.bankId = bankId;
         this.routingNum = routingNum;
     }
 
+    public Corporation getCorp() {
+        return corp;
+    }
 
+    public void setCorp(Corporation corp) {
+        this.corp = corp;
+    }
 
     @Override
     public String toString() {
         return "Bank{" +
-                "corpId='" + corpId + '\'' +
+                "corpId='" + corp + '\'' +
                 ", bankId='" + bankId + '\'' +
                 ", routingNum='" + routingNum + '\'' +
                 '}';
@@ -45,13 +51,6 @@ public class Bank {
 //        this.account = account;
 //    }
 
-    public String getCorpId() {
-        return corpId;
-    }
-
-    public void setCorpId(String corpId) {
-        this.corpId = corpId;
-    }
 
     public String getBankId() {
         return bankId;

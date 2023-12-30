@@ -13,10 +13,6 @@ public class Account {
     @ManyToOne
     @JoinColumn(name = "bankId")
     private Bank bank;
-//    @Column(name = "bank_id", columnDefinition = "VARCHAR(20)", nullable = false)
-//    private String bankId;
-    @Column(name = "corp_id", columnDefinition = "VARCHAR(20)", nullable = false)
-    private String corpId;
     @Column(name = "accountNum", columnDefinition = "VARCHAR(100)", nullable = false)
     private String accountNum;
     @Column(name = "opened", columnDefinition = "DATE")
@@ -29,19 +25,9 @@ public class Account {
     public Account() {
     }
 
-    public Account(String accountId, Bank bank, String corpId, String accountNum, LocalDate opened, String owner, int balance_usd) {
+    public Account(String accountId, Bank bank, String accountNum, LocalDate opened, String owner, int balance_usd) {
         this.accountId = accountId;
         this.bank = bank;
-        this.corpId = corpId;
-        this.accountNum = accountNum;
-        this.opened = opened;
-        this.owner = owner;
-        this.balance_usd = balance_usd;
-    }
-
-    public Account(Bank bank, String corpId, String accountNum, LocalDate opened, String owner, int balance_usd) {
-        this.bank = bank;
-        this.corpId = corpId;
         this.accountNum = accountNum;
         this.opened = opened;
         this.owner = owner;
@@ -97,20 +83,11 @@ public class Account {
         this.balance_usd = balance_usd;
     }
 
-    public String getCorpId() {
-        return corpId;
-    }
-
-    public void setCorpId(String corpId) {
-        this.corpId = corpId;
-    }
-
     @Override
     public String toString() {
         return "Account{" +
                 "accountId='" + accountId + '\'' +
-                ", bank=" + bank.getBankId() +
-                ", corpId='" + corpId + '\'' +
+                ", bank=" + bank.getBankId() + '\'' +
                 ", accountNum='" + accountNum + '\'' +
                 ", opened=" + opened +
                 ", owner='" + owner + '\'' +

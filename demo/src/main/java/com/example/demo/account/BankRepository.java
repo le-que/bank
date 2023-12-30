@@ -8,7 +8,4 @@ import java.util.Optional;
 public interface BankRepository extends JpaRepository<Bank, String> {
     @Query("SELECT b FROM Bank b WHERE b.bankId = ?1")
     Optional<Bank> findByBankId(String bankId);
-
-    @Query("SELECT b FROM Bank b")
-    List<Bank> findAll();
 }
