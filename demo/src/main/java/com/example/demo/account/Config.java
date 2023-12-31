@@ -1,12 +1,19 @@
 package com.example.demo.account;
 
+import com.example.demo.account.entity.Account;
+import com.example.demo.account.entity.Bank;
+import com.example.demo.account.entity.Corporation;
+import com.example.demo.account.entity.Customer;
+import com.example.demo.repository.AccountRepository;
+import com.example.demo.repository.BankRepository;
+import com.example.demo.repository.CorpRepository;
+import com.example.demo.repository.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.List;
 
 @Configuration
 public class Config {
