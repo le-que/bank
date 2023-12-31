@@ -1,0 +1,1 @@
+This project focuses on creating a bank backend using Spring Boot. It utilizes Spring Data JPA to interact with a postgres database. It also implements a REST API to perform CRUD operations on the database.
